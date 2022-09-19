@@ -66,13 +66,17 @@ const getVideo = function () {
     })
     .then((data) => {
       console.log(data.photos[0]);
-      console.log(data.photos[0].src.original);
       let backgroundImage = document.getElementsByTagName("BODY")[0];
 
-      let backgroundImageUrl = data.photos[1].src.original;
-      backgroundImage.style.backgroundImage = "url(" + backgroundImageUrl + ")";
-      backgroundImage.style.backgroundRepeat = "no-repeat";
-      backgroundImage.style.backgroundSize = "cover";
-      backgroundImage.style.backgroundPosition = "center";
+      if (data.photos[0] == undefined) {
+        backgroundImage.style.backgroundImage = "url(./img/959309.png)";
+      } else {
+        let backgroundImageUrl = data.photos[1].src.original;
+        backgroundImage.style.backgroundImage =
+          "url(" + backgroundImageUrl + ")";
+        backgroundImage.style.backgroundRepeat = "no-repeat";
+        backgroundImage.style.backgroundSize = "cover";
+        backgroundImage.style.backgroundPosition = "center";
+      }
     });
 };
