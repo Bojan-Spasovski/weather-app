@@ -39,12 +39,14 @@ let weather = {
 
 document.querySelector(".search button").addEventListener("click", () => {
   weather.search();
+  getPhoto();
+  document.querySelector(".search-bar").value = "";
 });
 
 document.querySelector(".search-bar").addEventListener("keyup", (event) => {
   if (event.key == "Enter") {
     weather.search();
-    getVideo();
+    getPhoto();
     document.querySelector(".search-bar").value = "";
   }
 });
@@ -53,7 +55,7 @@ document.querySelector(".search-bar").addEventListener("keyup", (event) => {
 
 //===Random Image API===//
 
-const getVideo = function () {
+const getPhoto = function () {
   let name = document.querySelector(".search-bar").value;
 
   fetch("https://api.pexels.com/v1/search?query=" + name, {
